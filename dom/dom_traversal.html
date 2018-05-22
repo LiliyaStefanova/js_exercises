@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Seven wonders of the world</h1>
+<p>Do you know the seven wonders of the world?</p>
+<div id="content">
+    <h2>Wonders from Antiquity</h2>
+    <p>This list comes to us from ancient times</p>
+    <ul class="wonders" id="ancient">
+        <li class="exists"> Great Pyramid of Giza</li>
+        <li>Hanging Gardens of Babylon</li>
+        <li>Lighthouse of Alexandria</li>
+        <li>Statue of Zeus at Olympia</li>
+        <li>Temple of Artemis at Ephesus</li>
+        <li>Mausoleum at Halicarnassus</li>
+        <li>Colossus of Rohodes</li>
+    </ul>
+    <h2>Modern wonders of the world</h2>
+    <p>This list was decided by vote</p>
+    <ul class="wonders" id="new">
+        <li class="exists">Petra</li>
+        <li class="exists">Great Wall of China</li>
+        <li class="exists">Christ the Redeemer</li>
+        <li class="exists">Machu Picchu</li>
+        <li class="exists">Chichen Itza</li>
+        <li class="exists">Colosseum</li>
+        <li class="exists">Taj Mahal</li>
+    </ul>
+    <h2>References</h2>
+    <ul>
+        <li>
+            <a href="http://en.wikipedia.org/wiki/Seven_Wonders_of_the_Ancient_World">
+                Seven Wonders of the Ancient World
+            </a>
+        </li>
+        <li>
+            <a href="https://en.wikipedia.org/wiki/New7Wonders_of_the_World">
+                New wonders of the World
+            </a>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    const titleElements = document.getElementsByTagName("h2");
+    console.log(titleElements[0]);
+    console.log(titleElements.length);
+    const existingWondersElements = Array.from(document.getElementsByClassName("exists")).forEach(n=>{
+        console.log(n.innerHTML);
+    });
+    console.log(document.getElementById("new"));
+    //Select all paragraphs - should be 3
+    console.log(document.querySelectorAll("p").length);
+    //Show the first paragraph - returns the first match
+    console.log(document.querySelector("p").innerHTML);
+    //All paragraphs inside the "content id block = should be 2
+    console.log(document.querySelectorAll("#content p").length);
+    //All elements with the "exists" class - should be 8
+    console.log(document.querySelectorAll(".exists").length);
+    //All "ancient wonders that still exist - should be 1
+    console.log(document.querySelectorAll("#ancient > .exists").length);
+    //Text content of all DOM elements with ID "content"
+    console.log(document.getElementById("content").textContent);
+    //Get the attribute href of a
+    console.log(document.querySelector("a").getAttribute("href"));
+    //Check the existence of an attribute
+    if(document.querySelector("a").hasAttribute("target")){
+        console.log("The first link has a target attribute");
+    } else{
+        console.log("The first link does not have a target attribute");
+    }
+    //check if an element has a certain class
+    if(document.getElementById("ancient").classList.contains("wonders")) {
+        console.log("The element with ID 'ancient' has the class 'wonders'");
+    } else{
+        console.log("The element with ID 'ancient' does not have the class 'wonders'");
+    }
+</script>
+</body>
+</html>

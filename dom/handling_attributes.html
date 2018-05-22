@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Musical instruments</title>
+</head>
+<body>
+<h1>Some musical instruments</h1>
+<ul>
+    <li id="clarinet" class="wind woodwind">
+        The <a href="https://en.wikipedia.org/wiki/Clarinet">clarinet</a>
+    </li>
+    <li id="saxophone" class="wind woodwind">
+        The <a href="https://en.wikipedia.org/wiki/Saxophone">saxophone</a>
+    </li>
+    <li id="trumpet" class="wind brass">
+        The <a href="https://en.wikipedia.org/wiki/Trumpet">trumpet</a>
+    </li>
+    <li id="violin" class="chordophone">
+        The <a href="https://en.wikipedia.org/wiki/Violin">violin</a>
+    </li>
+    <li id="harpsichord">
+        The <a href="https://en.wikipedia.org/wiki/Harpsichord">harpsichord</a>
+    </li>
+</ul>
+<script type="text/javascript">
+    function linkInfo(){
+        const totalNumberOfLinks = document.getElementsByTagName("a").length;
+        const firstLink = document.querySelector("a");
+        const lastLink = Array.from(document.getElementsByTagName("a"))[totalNumberOfLinks-1];
+        console.log("The total number of links is: ", totalNumberOfLinks);
+        if(firstLink.hasAttribute("href")){
+            console.log("target of first link: ", firstLink.href);
+
+        } else{
+            console.log("the link has no target");
+        }
+        if(lastLink.hasAttribute("href")){
+            console.log("target of the second link: ", lastLink.getAttribute("href"));
+
+        } else{
+            console.log("the last link has no target");
+        }
+    }
+    linkInfo();
+
+    const has = (id, someClass) =>{
+        const element = document.getElementById(id);
+        if(element){
+            console.log(element.classList.contains(someClass));
+        } else{
+            console.error("No such element");
+        }
+    };
+
+    has("saxophone", "woodwind");
+    has("saxophone", "brass");
+    has("trumpet", "brass");
+    has("contrabass", "chordophone");
+</script>
+</body>
+</html>

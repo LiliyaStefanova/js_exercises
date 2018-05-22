@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>A title</h1>
+    <div>Some text with a <a href="#">a link</a>.</div>
+    <script type="text/javascript">
+        const showChild = (node, index) =>{
+            if(node.childNodes[index]){
+                console.log(node.childNodes[index]);
+            } else{
+                console.log("No such child exists");
+            }
+
+        };
+        showChild(document.body, 1);
+        showChild(document.body, -1);
+        showChild(document.body, 8);
+        showChild(document.body.childNodes[0], 0);
+        const showParent = (node) =>{
+            console.log(node.parentNode);
+        };
+        console.log("The parents of the body are: ");
+        showParent(document.body);
+        const browseNodes = (node) => {
+            node.childNodes.forEach(n => console.log(n));
+        };
+        console.log("The body's children are:");
+        browseNodes(document.body);
+    </script>
+</body>
+</html>

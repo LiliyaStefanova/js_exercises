@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modify page structure</title>
+</head>
+<body>
+<h3 class="beginning">Some languages</h3>
+<div id="content">
+    <!-- Can use insertAdjacentHtml() to add to a certain section of a DOM branch -->
+    <!-- beforeBegin -->
+    <ul id="languages">
+        <!-- afterBegin -->
+        <li id="cpp">C++</li>
+        <li id="java">Java</li>
+        <li id="csharp">C#</li>
+        <li id="php">PHP</li>
+        <!--beforeEnd -->
+    </ul>
+    <!-- afterEnd -->
+</div>
+<!-- Using built in script tag with inline Javascript for convenience's sake -->
+<script type="text/javascript">
+    //append another element's html to the ul innerHtml
+    document.getElementById("languages").innerHTML += '<li id="c">C</li>';
+    //empty content of a an element
+    document.getElementById("c").innerHTML = '';
+    //Update the text content of an element
+    document.querySelector('.beginning').textContent += " for programming";
+    //setting attributes
+    document.querySelector("h3").setAttribute("id", "title");
+    //technically id exists as a property and can be directly updated like so:
+    //document.querySelector("h3").id = "title";
+    //using classList to add and remove classes from the DOM elements
+    const titleElement = document.querySelector("h3");
+    titleElement.classList.remove("beginning");
+    titleElement.classList.add("title");
+    console.log(titleElement);
+
+    //Adding a new element to the page - 1) Create 2) Update properties 3) Insert into DOM
+    const pythonElement = document.createElement("li");
+    pythonElement.id = "python";
+    pythonElement.textContent = "Python";
+    document.getElementById("languages").appendChild(pythonElement);
+    //create through appending a text node
+    const rubyElement = document.createElement("li");
+    rubyElement.id="ruby";
+    rubyElement.appendChild(document.createTextNode("Ruby"));
+    document.getElementById("languages").appendChild(rubyElement);
+    //insert before a certain node instead of appending at the end
+    const perlElement = document.createElement("li");
+    perlElement.id = "perl";
+    perlElement.textContent = "Perl";
+    document.getElementById("languages").insertBefore(perlElement, document.getElementById("php"));
+    //insertAdjacentHTML to add something to the top if the list
+    document.getElementById("languages").insertAdjacentHTML("afterBegin", '<li id="javascript">JavaScript</li>');
+    //replacing nodes
+    const lispElement = document.createElement("li");
+    lispElement.id="lisp";
+    lispElement.textContent = "Lisp";
+    document.getElementById("languages").replaceChild(lispElement, document.getElementById("perl"));
+    //removing nodes
+    document.getElementById("languages").removeChild(document.getElementById("c"));
+</script>
+</body>
+</html>

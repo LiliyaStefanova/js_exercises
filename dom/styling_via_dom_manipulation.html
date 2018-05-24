@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Styling</title>
+    <style>
+        #para {
+            font-style: italic;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<p>First</p>
+<p style="color:green;">Second</p>
+<p id="para">Third</p>
+<script type="text/javascript">
+    const paragraphElement = document.querySelector("p");
+    paragraphElement.style.color = "red";
+    paragraphElement.style.margin = "50px";
+    paragraphElement.style.fontFamily = "Arial";
+    paragraphElement.style.backgroundColor = "black";
+</script>
+</body>
+</html>

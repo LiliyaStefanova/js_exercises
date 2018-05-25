@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini dictionary</title>
+</head>
+<body>
+<h3>A mini dictionary</h3>
+<div id="content"></div>
+<script type="text/javascript">
+    const words = [
+        {
+            term: "Procrastination",
+            definition: "Avoidance of doing a task that needs to be accomplished"
+        },
+        {
+            term: "Tautology",
+            definition: "Logical argument constructed in such a way that it is logically irrefutable"
+        },
+        {
+            term: "Oxymoron",
+            definition: "Figure of speech that juxtaposes elements that appear to be contradictory"
+        }
+    ];
+    const definitionListElement = document.createElement("dl");
+    definitionListElement.id = "terms";
+    document.getElementById("content").appendChild(definitionListElement);
+    words.forEach((term) => {
+        const strongElement = document.createElement("strong");
+        const termElement = document.createElement("dt");
+        termElement.textContent = term.term;
+        strongElement.appendChild(termElement);
+        const descriptionElement = document.createElement("dd");
+        descriptionElement.textContent = term.definition;
+        document.getElementById("terms").appendChild(strongElement);
+        document.getElementById("terms").appendChild(descriptionElement);
+    });
+</script>
+</body>
+</html>

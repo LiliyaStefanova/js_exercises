@@ -20,6 +20,10 @@
     paragraphElement.style.margin = "50px";
     paragraphElement.style.fontFamily = "Arial";
     paragraphElement.style.backgroundColor = "black";
+    //to access externally defined styles you cannot use styles. Use .getComputerStyles instead
+    const paragraphStyle = getComputedStyle(document.getElementById("para"));
+    console.log(paragraphStyle.fontStyle);
+    console.log(paragraphStyle.color);
 </script>
 </body>
 </html>

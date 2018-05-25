@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Newspapers</title>
+</head>
+<body>
+<h3>Some newspapers</h3>
+<div id="content"></div>
+<script type="text/javascript">
+    const newspapers = ["https://www.nytimes.com", "https://washingtonpost.com", "http://www.economist.com"];
+    const newspaperElements = [];
+    newspapers.forEach((item) => {
+        let bullet = document.createElement("li");
+        let link = document.createElement("a");
+        link.href = item;
+        if(item.includes("nytimes")){
+            link.textContent = "NY Times";
+        }
+        else if(item.includes("washington")){
+            link.textContent = "Washington Post";
+        }
+        else {
+            link.textContent = "The Economist";
+        }
+        bullet.appendChild(link);
+        newspaperElements.push(bullet);
+    });
+    const newspaperElement = document.createElement("ul");
+    newspaperElement.id = "papers";
+    document.getElementById("content").appendChild(newspaperElement);
+    newspaperElements.forEach((node) => {
+        newspaperElement.appendChild(node);
+    });
+</script>
+
+</body>
+</html>

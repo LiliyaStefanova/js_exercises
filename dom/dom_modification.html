@@ -61,6 +61,9 @@
     document.getElementById("languages").replaceChild(lispElement, document.getElementById("perl"));
     //removing nodes
     document.getElementById("languages").removeChild(document.getElementById("c"));
+    //insert a paragraph after the languages list
+    document.getElementById("languages").insertAdjacentHTML("afterEnd", '<p>Here is a more complete ' +
+        '<a href="https://en.wikipedia.org/wiki/List_of_programming_languages">list</a> of languages</p>');
 </script>
 </body>
 </html>

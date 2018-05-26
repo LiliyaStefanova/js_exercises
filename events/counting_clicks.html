@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Count clicks</title>
+</head>
+<body>
+<button id="myButton">Click me!</button>
+<p>You clicked on the button <span id="clickCount">0</span> times</p>
+<button id="deactivate">Deactivate counting</button>
+<script type="text/javascript">
+    let clickCount = 0;
+    const clickCounter = (e) => {
+        clickCount++;
+        document.getElementById("clickCount").textContent = `${clickCount}`;
+    };
+    document.getElementById("myButton").addEventListener("click", clickCounter);
+    document.getElementById("deactivate").addEventListener("click", e => {
+        document.getElementById("myButton").removeEventListener("click", clickCounter);
+    });
+</script>
+</body>
+</html>

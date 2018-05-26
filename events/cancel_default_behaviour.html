@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Default behaviour</title>
+</head>
+<body>
+<p>Time on your hands? <a id="forbidden" href="https://9gag.com">Click here</a> </p>
+<script type="text/javascript">
+    document.getElementById("forbidden").addEventListener("click", e => {
+        console.log("Yes but no");
+        e.preventDefault(); //Cancel the default behaviour of the element - loading the link
+    });
+</script>
+</body>
+</html>

@@ -2,9 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Events</title>
 </head>
 <body>
-$END$
+<button id="myButton">Click me!</button>
+<script type="text/javascript">
+    //document.getElementById("myButton").addEventListener("click", () => alert("Hello!"));
+    //Each event has an associated Event object which contains methods on the event and properties of the event
+    document.getElementById("myButton").addEventListener("click", e => {
+        console.log(`Event type ${e.type}, target ${e.target}`);
+    });
+    //react to a keypress event by showing the pressed character
+    document.addEventListener("keypress", e => {
+        console.log(`You pressed the ${String.fromCharCode(e.charCode)} key`);
+    });
+    //display as part of other keyboard events
+    const keyboardInfo = e => {
+        console.log(`Keyboard event: ${e.type}, key: ${e.keyCode}`);
+    };
+
+    document.addEventListener("keydown", keyboardInfo);
+    document.addEventListener("keyup", keyboardInfo);
+
+    //Mouse events
+    const getMouseButton = code => {
+        let button = "unknown";
+        switch(code) {
+            case 0:
+                button = "left";
+                break;
+            case 1:
+                button = "middle";
+                break;
+            case 2:
+                button = "right";
+                break;
+        }
+        return button;
+    };
+    const mouseInfo = e => {
+        console.log(`Mouse event: ${e.type}, button: ${getMouseButton(e.button)}, X: ${e.clientX}, Y: ${e.clientY}`);
+    };
+    document.addEventListener("mousedown", mouseInfo);
+    document.addEventListener("mouseup", mouseInfo);
+    document.addEventListener("click", mouseInfo);
+
+    //Page loading events
+    //Page loading
+    window.addEventListener("load", e=> {console.log("The page has been loaded")});
+    //page closing / unloading
+    window.addEventListener("beforeunload", e =>{
+        const message = "Should you stay or should you go?";
+        //This is a standard way of showing a confirmation dialog - assign a return value to the event
+        e.returnValue = message;
+        return message;
+    });
+</script>
 </body>
 </html>

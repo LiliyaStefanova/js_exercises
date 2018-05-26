@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Desserts</title>
+</head>
+<body>
+<h1>My Favourite desserts</h1>
+<ul id="desserts"></ul>
+<button id="addButton">Add a dessert</button>
+<script type="text/javascript">
+    const desserts = ["tiramisu", "apple pie", "ice cream", "treacle tart"];
+    let i = 0;
+    const addElement = () =>{
+        let dessertElement = null;
+        if(i<desserts.length){
+            dessertElement = document.createElement("li");
+            dessertElement.textContent = desserts[i];
+            i++;
+        }
+        else{
+            alert("No more desserts left to add");
+        }
+        document.getElementById("desserts").appendChild(dessertElement);
+        dessertElement.addEventListener("click", changeElement);
+    };
+    const changeElement = (e) => {
+
+        e.target.textContent = "Gummy bears";
+    };
+    document.getElementById("addButton").addEventListener("click", addElement);
+
+
+
+
+</script>
+</body>
+</html>

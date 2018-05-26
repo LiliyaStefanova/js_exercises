@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Propagate</title>
+</head>
+<body>
+<p id="para"> A paragraph with a <button id="propa">button</button> inside</p>
+<script type="text/javascript">
+    /*
+        When an event is triggered in a lower DOM node, the type of event will be propagated
+        up the whole node tree up to the root.
+        Any event handlers for this event at higher level of the tree will be triggered
+        In the event below, the button "click" event will also be handled by the paragraph and the document
+     */
+    document.addEventListener("click", e=>{
+        console.log("Document handler");
+    });
+    document.getElementById("para").addEventListener("click", e => {
+        console.log("Paragraph handler");
+    });
+    //Propagation can also be stopped from going further up the chain
+    document.getElementById("propa").addEventListener("click", e=> {
+        console.log("Button handler");
+//        e.stopPropagation();
+    })
+</script>
+</body>
+</html>

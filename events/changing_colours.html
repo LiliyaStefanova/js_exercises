@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colours</title>
+</head>
+<body>
+<p> Press the R(red), Y(yellow), G(green) or B(blue) to change paragraph colours accordingly</p>
+<h1>Paragraph 1</h1>
+<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+<h1>Paragraph 2</h1>
+<div>Vivamus at justo balndit, ornare leo id, vehicula urna</div>
+<h1>Paragraph 3</h1>
+<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet haretra massa</div>
+</body>
+<script type="text/javascript">
+    const changeColour = (e) => {
+        const keyCode = e.charCode;
+        console.log(`Key code: ${keyCode}`);
+        const keyChar = String.fromCharCode(keyCode);
+        console.log(`Key char: ${keyChar}`);
+        const allDivElements = Array.from(document.getElementsByTagName("div"));
+        switch(keyChar){
+            case 'r':
+                allDivElements.forEach(item =>{
+                    item.style.backgroundColor = 'red';
+                });
+                break;
+            case 'y':
+                allDivElements.forEach(item =>{
+                    item.style.backgroundColor = 'yellow';
+                });
+                break;
+            case 'g':
+                allDivElements.forEach(item =>{
+                    item.style.backgroundColor = 'green';
+                });
+                break;
+            case 'b':
+                allDivElements.forEach(item =>{
+                    item.style.backgroundColor = 'blue';
+                });
+                break;
+        }
+    };
+    document.addEventListener("keypress", changeColour);
+</script>
+</html>

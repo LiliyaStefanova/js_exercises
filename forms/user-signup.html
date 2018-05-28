@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+</head>
+<body>
+<form>
+    <h1>Sign up form</h1>
+    <p>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required/>
+        <span id="usernameHelp"></span>
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password" required/>
+        <span id="passwordHelp"></span>
+    </p>
+        <label for="emailAddress">Email address</label>
+        <input type="text" name="emailAddress" id="emailAddress" required
+        placeholder="user@domain"/>
+        <span id="emailAddressHelp"></span>
+    </p>
+    <p>
+        <input type="checkbox" name="confirmation" id="confirmation">
+        <label for="confirmation"> Send me a confirmation email</label>
+    </p>
+    <p>
+        <input type="radio" name="subscription" id="newsroom" value="newspromo">
+        <label for="newsroom">Subscribe me to newsletters and promotions</label>
+        <input type="radio" name="subscription" id="news" value="news">
+        <label for="news">Subscribe me to the newsletter only</label>
+        <input type="radio" name="subscription" id="no" value="no" checked>
+        <label for="no">No Subscriptions</label>
+        <br>
+    </p>
+    <p>
+        <label for="nationality">Nationality</label>
+        <select name="nationality" id="nationality">
+            <option value="US" selected>American</option>
+            <option value="FR">French</option>
+            <option value="ES">Spanish</option>
+            <option value="XX">Other</option>
+        </select>
+    </p>
+    <input type="submit" value="Submit"/>
+    <input type="reset" value="Cancel"/>
+</form>
+<script type="text/javascript">
+    const userNameElement = document.getElementById("username");
+
+    //Focus and blur events on form fields
+    userNameElement.addEventListener("focus",e => {
+        document.getElementById("usernameHelp").textContent = "Enter a unique user name"
+    });
+    userNameElement.addEventListener("blur", e => {
+        document.getElementById("usernameHelp").textContent = "";
+    });
+    //Show if the send confirmation checkbox is checked
+    document.getElementById("confirmation").addEventListener("change", (e) =>{
+        console.log(`Email confirmation request:  ${e.target.checked}`);
+    });
+    //Check the value of the selected radiobox when it changes
+    const subscriptionElements = Array.from(document.getElementsByName("subscription"));
+    subscriptionElements.forEach(elem => {
+        elem.addEventListener("change", e => {
+            console.log(`Selected subscription ${e.target.value}`);
+        });
+    });
+    //Check the selected value from a dropdown after a choice made
+    document.getElementById("nationality").addEventListener("change", e => {
+        console.log(`Nationality code: ${e.target.value}`);
+    });
+    //Access the form as a DOM node
+    const formElement = document.querySelector("form");
+    console.log(`Number of fields: ${formElement.elements.length}`);
+    console.log(formElement.elements[0].name);
+    console.log(formElement.elements.password.type);
+    //Submit event
+    formElement.addEventListener("submit", e => {
+        console.log(`Number of fields: ${formElement.elements.length}`);
+        console.log(formElement.elements[0].name);
+        console.log(formElement.elements.password.type);
+        e.preventDefault();
+    });
+    //Form validation on input
+    document.getElementById("password").addEventListener("input", e =>{
+        const password = e.target.value;
+        let passwordLength = "too short";
+        let messageColor = "red";
+        if(password.length >=8){
+            passwordLength = "adequate";
+            messageColor = "green";
+        } else if(password.length >=4){
+            passwordLength = "moderate";
+            messageColor = "orange";
+        }
+        const passwordHelpElement = document.getElementById("passwordHelp");
+        passwordHelpElement.textContent = `Length: ${password.length}`;
+        passwordHelpElement.style.color = messageColor;
+    });
+    //On blur validation (post input)
+    document.getElementById("emailAddress").addEventListener("blur", e => {
+        let emailAddressAvailability = "";
+        const emailRegex = /.+@.+\..+./;
+        if(!emailRegex.test(e.target.value)){
+            emailAddressAvailability = "Invalid address";
+        }
+        document.getElementById("emailAddressHelp").textContent = emailAddressAvailability;
+    })
+</script>
+</body>
+</html>

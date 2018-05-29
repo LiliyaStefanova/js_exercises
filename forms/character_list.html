@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GoT characters</title>
+</head>
+<body>
+<h1>A few of the Game of Thrones characters</h1>
+<form>
+    <label for="house">House</label>
+    <select name="house" id="house">
+        <option value="" selected>Select a house</option>
+    </select>
+</form>
+<p>
+    <ul id="characters"></ul>
+</p>
+<script type="text/javascript">
+    const houses = [
+        {
+            code: "ST",
+            name:"Stark"
+        },
+        {
+            code:"LA",
+            name:"Lannister"
+        },
+        {
+            code: "BA",
+            name: "Baratheon"
+        },
+        {
+            code:"TA",
+            name:"Targaryen"
+        }
+    ];
+
+    const getCharacters = houseCode => {
+        switch(houseCode){
+            case "ST":
+                return ["Eddard", "Catelyn", "Robb", "Sansa", "Arya", "Jon Snow"];
+            case "LA":
+                return ["Tywin", "Cersei", "Jaime", "Tyrion"];
+            case "BA":
+                return ["Robert", "Stannis", "Renly"];
+            case "TA":
+                return ["Aerys", "Daenerys", "Viserys"];
+            default:
+                return [];
+        }
+    };
+    window.addEventListener("load", e => {
+        let houseElements = [];
+        houses.forEach(house => {
+            const houseElement = document.createElement("option");
+            houseElement.textContent = house.name;
+            houseElement.value = house.code;
+            houseElements.push(houseElement);
+        });
+        const houseDropdownElement = document.getElementById("house");
+        houseElements.forEach(element =>{
+            houseDropdownElement.appendChild(element);
+        });
+    });
+    document.getElementById("house").addEventListener("change", e => {
+        const members = getCharacters(e.target.value);
+        let charactersList = document.getElementById("characters");
+        charactersList.innerHTML = '';
+        members.forEach(member => {
+            const memberElement = document.createElement("li");
+            memberElement.textContent = member;
+            charactersList.appendChild(memberElement);
+        });
+    });
+</script>
+</body>
+</html>

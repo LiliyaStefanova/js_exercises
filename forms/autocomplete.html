@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autocomplete Country</title>
+    <style>
+        .suggestion{
+            padding-left: 2px;
+            padding-right: 2px;
+            width: 150px;
+            font-size: 12px;
+        }
+        .suggestion:hover{
+            background-color: #adf;
+            cursor: pointer;
+        }
+        #suggestions{
+            position: absolute;
+            border: 1px solid black;
+            left:85px;
+            top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+<label for="country"> Enter a country name</label>
+<input type="text" id="country">
+<div id="suggestions"></div>
+<script type="text/javascript">
+    const countryList = [
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Andorra",
+        "Angola",
+        "Anguilla",
+        "Antarctica",
+        "Antigua-and-Barbuda",
+        "Argentina",
+        "Armenia",
+        "Aruba",
+        "Australia",
+        "Austria",
+        "Azerbaijan"
+    ];
+    const suggestions = document.getElementById("suggestions");
+    document.getElementById("country").addEventListener("input", e => {
+        suggestions.innerHTML = '';
+        const valueEntered = e.target.value.toLowerCase();
+        const matches = countryList.filter(country => country.toLowerCase().startsWith(valueEntered));
+        const suggestionsElement = document.createElement("ul");
+        suggestionsElement.style = "list-style: none";
+        suggestionsElement.id = "suggestions";
+        matches.forEach(match => {
+            const suggestionElement = document.createElement("li");
+            suggestionElement.textContent = match;
+            suggestionElement.className = "suggestion";
+            suggestionElement.addEventListener("click", e => {
+                console.log(e.target.innerHTML);
+                document.getElementById("country").textContent = e.target.innerHTML;
+                console.log(document.getElementById("country").textContent);
+            });
+            suggestionElement.addEventListener("hover", e => {
+               e.target.className = "suggestion:hover";
+            });
+            suggestionsElement.appendChild(suggestionElement);
+
+        });
+        suggestions.appendChild(suggestionsElement);
+    });
+</script>
+</body>
+</html>

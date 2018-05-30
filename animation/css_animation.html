@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS animation</title>
+    <style>
+        #frame{
+            border: 1px solid red;
+        }
+        #block{
+            width:20px;
+            height:40px;
+            background:red;
+            position:relative;
+            margin-left: -20px;
+            animation-name:moveBlock;
+            animation-duration:6s;
+            animation-fill-mode:forwards;
+        }
+
+        @keyframes moveBlock {
+            from{
+                left:20px;
+            }
+            to{
+                left:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="frame">
+    <div id="block"></div>
+</div>
+</body>
+</html>

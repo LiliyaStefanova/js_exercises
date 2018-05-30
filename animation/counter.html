@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Self-destruct counter</title>
+</head>
+<body>
+<h1 id="title">This page will self-destruct in
+    <span id="counter">10</span>
+    second(s)...
+</h1>
+<script type="text/javascript">
+    //Count down the timer
+    const decreaseCounter = () =>{
+        const titleElement = document.getElementById("title");
+        const counter = Number(counterElement.textContent);
+        if(counter>0){
+            counterElement.textContent = counter - 1;
+        } else{
+            //removes the repeated action - needs a reference to the interval
+            clearInterval(intervalId);
+            titleElement.textContent = "BOOM!!!"
+        }
+        //Modify the title after 2 seconds
+        //setTimeout calls a function after the interval specified has passed
+        setTimeout(() => {
+            titleElement.textContent = "Everything's broken now";}, 2000);
+    };
+    const counterElement = document.getElementById("counter");
+    //The decrease counter function will be called indefinitely every 1 second
+    const intervalId = setInterval(decreaseCounter, 1000);
+</script>
+</body>
+</html>

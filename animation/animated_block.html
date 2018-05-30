@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animated block</title>
+    <style>
+        #frame{
+            border: 1px solid red;
+        }
+        #block{
+            width:20px;
+            height:40px;
+            background:red;
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+<div id="frame">
+    <div id="block"></div>
+</div>
+<script type="text/javascript">
+    const moveBlock = () => {
+        //get the left position of the block and convert it to a number
+
+        const xBlock = parseFloat(getComputedStyle(blockElement).left);
+        const blockWidth = parseFloat(getComputedStyle(blockElement).width);
+
+        const xMax = parseFloat(getComputedStyle(frame).width);
+
+        if(xBlock+blockWidth <= xMax){
+            //move the block to the right by "movement" amount of pixels
+            blockElement.style.left = (xBlock + movement) + "px";
+
+            //have the browser call the moveBlock function ASAP
+            animationId = requestAnimationFrame(moveBlock);
+        } else{
+            //stop the animation
+            cancelAnimationFrame(animationId);
+        }
+
+
+    };
+    const blockElement = document.getElementById("block");
+    const frame = document.getElementById("frame");
+    const movement = 7;
+    let animationId = requestAnimationFrame(moveBlock);
+</script>
+</body>
+</html>

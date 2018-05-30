@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chronometer</title>
+    <style>
+        #chronometer{
+            background: papayawhip;
+            overflow: hidden;
+            text-align: center;
+            width:165px;
+        }
+        #number > span{
+            color: green;
+            display: inline-block;
+            /* float:left;  remove */
+            margin: 10px 10px 0 0;
+            padding: 5px 10px
+        }
+    </style>
+</head>
+<body>
+<h2>Chronometer</h2>
+<h3 id="chronometer"><span id="counter">0</span></h3>
+<div id="buttons">
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</div>
+<script type="text/javascript">
+    let intervalId;
+    document.getElementById("start").addEventListener("click", e =>{
+       intervalId = setInterval(countSeconds, 1000);
+    });
+
+    document.getElementById("stop").addEventListener("click", e=>{
+        clearInterval(intervalId);
+    });
+
+    const countSeconds = () => {
+        const counterElement = document.getElementById("counter");
+        const counter = Number(counterElement.textContent);
+        counterElement.textContent = counter +1;
+    };
+
+</script>
+</body>
+</html>

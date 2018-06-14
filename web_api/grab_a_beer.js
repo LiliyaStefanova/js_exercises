@@ -9,11 +9,15 @@ const grabARandomBeer = () => {
             nameElement.textContent = beer.name;
             const descriptionElement = document.createElement("p");
             descriptionElement.textContent = beer.description;
+            const volumeElement = document.createElement("p");
+            volumeElement.textContent = `Alcohol by volume: ${beer.abv} %.
+            Volume: ${beer.volume.value} ${beer.volume.unit}. First Brewed on: ${beer.first_brewed}`;
             const beerElement = document.getElementById("beer");
             //clear out previous entries
             beerElement.innerHTML = "";
             beerElement.appendChild(nameElement);
             beerElement.appendChild(descriptionElement);
+            beerElement.appendChild(volumeElement);
         })
         .catch(err => console.log(err.message));
 

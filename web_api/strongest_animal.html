@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Strongest Animal</title>
 </head>
 <body>
-$END$
+<h2>Which one is the strongest?</h2>
+<form>
+    <p>
+        <input type="radio" name="strongest" id="elephant" value="ELE" checked>
+        <label for="elephant">The Elephant</label>
+        <br>
+        <input type="radio" name="strongest" id="rhinoceros" value="RHI">
+        <label for="rhinoceros">The rhinoceros</label>
+        <br>
+        <input type="radio" name="strongest" id="hippo" value="HIP">
+        <label for="hippo">The hippo</label>
+        <br>
+    </p>
+    <p>
+        <label for="name">Your name</label>
+        <input type="text" name="name" id="name" required>
+    </p>
+    <input type="submit" value="Vote">
+</form>
+<p id="result"></p>
+<script type="text/javascript" src="strongest_animal.js"></script>
 </body>
 </html>
